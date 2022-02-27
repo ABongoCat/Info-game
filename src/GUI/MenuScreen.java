@@ -67,7 +67,7 @@ public class MenuScreen extends Screen implements IUpdateable {
                     comp.setHovered(false);
                 }
                 this.mainMenu.getCellComponents().get(this.mainMenu.getCurrentSelection()).setHovered(true);
-                // Game.audio().playSound("select.wav");
+
             }
 
             if (event.getKeyCode() == KeyEvent.VK_DOWN || event.getKeyCode() == KeyEvent.VK_S) {
@@ -77,18 +77,32 @@ public class MenuScreen extends Screen implements IUpdateable {
                     comp.setHovered(false);
                 }
                 this.mainMenu.getCellComponents().get(this.mainMenu.getCurrentSelection()).setHovered(true);
-                // Game.audio().playSound("select.wav");
+
             }
 
             if (event.getKeyCode() == KeyEvent.VK_ENTER || event.getKeyCode() == KeyEvent.VK_SPACE) {
-                // Game.audio().playSound("confirm.wav");
+
                 switch (this.mainMenu.getCurrentSelection()) {
+                    // play
                     case 0:
-                        this.startGame();
+                        this.changeScreen("GAME");
                         break;
+
+                    // options
                     case 1:
+                        this.changeScreen("OPTIONS");
+                        break;
+
+                    // about
+                    case 2:
+                        this.changeScreen("ABOUT");
+                        break;
+
+                    // exit
+                    case 3:
                         System.exit(0);
                         break;
+
                 }
 
             }
@@ -116,13 +130,13 @@ public class MenuScreen extends Screen implements IUpdateable {
         this.mainMenu.getCellComponents().get(0).setHovered(true);
     }
 
-    private void startGame() {
+    public void changeScreen(String screenName) {
         this.mainMenu.setEnabled(false);
         Game.window().getRenderComponent().fadeOut(1500);
 
         Game.loop().perform(1500, () -> {
             Game.window().getRenderComponent().fadeIn(1500);
-            // Game.screens().display("GAME");
+            Game.screens().display(screenName);
         });
     }
 

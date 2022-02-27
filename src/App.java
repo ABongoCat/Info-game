@@ -1,4 +1,7 @@
+import GUI.AboutScreen;
+import GUI.InGameScreen;
 import GUI.MenuScreen;
+import GUI.OptionScreen;
 import de.gurkenlabs.litiengine.Game;
 import de.gurkenlabs.litiengine.resources.Resources;
 
@@ -12,9 +15,15 @@ public class App {
 
         Game.graphics().setBaseRenderScale(4f);
 
+        GameManager.init();
+
         Resources.load("game.litidata");
 
         Game.screens().add(new MenuScreen());
+        Game.screens().add(new OptionScreen());
+        Game.screens().add(new AboutScreen());
+        Game.screens().add(new InGameScreen());
+
         Game.start();
     }
 }
