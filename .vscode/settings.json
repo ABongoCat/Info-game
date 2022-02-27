@@ -1,0 +1,21 @@
+{
+  "java.project.sourcePaths": ["src"],
+  "java.project.outputPath": "bin",
+  "java.project.referencedLibraries": [
+    "lib/**/*.jar",
+    "c:\\Users\\Mihai\\Desktop\\litiengine-sdk-v0.5.2-beta-win\\lib\\annotations-16.0.2.jar",
+    "c:\\Users\\Mihai\\Desktop\\litiengine-sdk-v0.5.2-beta-win\\lib\\jakarta.activation-2.0.1.jar",
+    "c:\\Users\\Mihai\\Desktop\\litiengine-sdk-v0.5.2-beta-win\\lib\\jakarta.xml.bind-api-3.0.1.jar",
+    "c:\\Users\\Mihai\\Desktop\\litiengine-sdk-v0.5.2-beta-win\\lib\\javax.activation-api-1.2.0.jar",
+    "c:\\Users\\Mihai\\Desktop\\litiengine-sdk-v0.5.2-beta-win\\lib\\jaxb-core-3.0.1.jar",
+    "c:\\Users\\Mihai\\Desktop\\litiengine-sdk-v0.5.2-beta-win\\lib\\jaxb-impl-3.0.1.jar",
+    "c:\\Users\\Mihai\\Desktop\\litiengine-sdk-v0.5.2-beta-win\\lib\\jinput-2.0.9.jar",
+    "c:\\Users\\Mihai\\Desktop\\litiengine-sdk-v0.5.2-beta-win\\lib\\jlayer-1.0.1.4.jar",
+    "c:\\Users\\Mihai\\Desktop\\litiengine-sdk-v0.5.2-beta-win\\lib\\jorbis-0.0.17.4.jar",
+    "c:\\Users\\Mihai\\Desktop\\litiengine-sdk-v0.5.2-beta-win\\lib\\litiengine-0.5.2.jar",
+    "c:\\Users\\Mihai\\Desktop\\litiengine-sdk-v0.5.2-beta-win\\lib\\mp3spi-1.9.5.4.jar",
+    "c:\\Users\\Mihai\\Desktop\\litiengine-sdk-v0.5.2-beta-win\\lib\\svgSalamander-1.1.2.4.jar",
+    "c:\\Users\\Mihai\\Desktop\\litiengine-sdk-v0.5.2-beta-win\\lib\\tritonus-share-0.3.7.4.jar",
+    "c:\\Users\\Mihai\\Desktop\\litiengine-sdk-v0.5.2-beta-win\\lib\\vorbisspi-1.0.3.3.jar"
+  ]
+}
