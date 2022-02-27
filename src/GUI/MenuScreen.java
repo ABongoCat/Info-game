@@ -2,10 +2,16 @@ package GUI;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.awt.event.KeyEvent;
 
+import de.gurkenlabs.litiengine.Align;
 import de.gurkenlabs.litiengine.Game;
 import de.gurkenlabs.litiengine.IUpdateable;
+import de.gurkenlabs.litiengine.Valign;
 import de.gurkenlabs.litiengine.graphics.ImageRenderer;
+import de.gurkenlabs.litiengine.graphics.TextRenderer;
+import de.gurkenlabs.litiengine.gui.GuiProperties;
+import de.gurkenlabs.litiengine.gui.ImageComponent;
 import de.gurkenlabs.litiengine.gui.Menu;
 import de.gurkenlabs.litiengine.gui.screens.Screen;
 import de.gurkenlabs.litiengine.input.Input;
@@ -28,11 +34,17 @@ public class MenuScreen extends Screen implements IUpdateable {
 
     public MenuScreen() {
         super("MENU");
+
+        GuiProperties.setDefaultFont(Fonts.MENU);
     }
 
     public void render(Graphics2D g) {
         ImageRenderer.render(g, background, 0, 0);
         ImageRenderer.render(g, logo, Game.window().getCenter().getX() - (logo.getWidth() / 2), 100);
+
+        g.setFont(Fonts.MENU);
+        g.setColor(Color.GREEN);
+        TextRenderer.render(g, "an info lk 2022 media project", Align.CENTER, Valign.TOP, 0, 20);
 
         super.render(g);
     }
@@ -44,10 +56,42 @@ public class MenuScreen extends Screen implements IUpdateable {
                 logo.getHeight() * 2.5,
                 BUTTON_WIDTH, BUTTON_HEIGHT * buttons.length, buttons);
 
-        Input.keyboard().onKeyReleased(e -> {
-            if (this.isSuspended())
+        Input.keyboard().onKeyReleased(event -> {
+            if (this.isSuspended()) {
                 return;
-            System.out.println(e.getKeyChar());
+            }
+
+            if (event.getKeyCode() == KeyEvent.VK_UP || event.getKeyCode() == KeyEvent.VK_W) {
+                this.mainMenu.setCurrentSelection(Math.max(0, this.mainMenu.getCurrentSelection() - 1));
+                for (ImageComponent comp : this.mainMenu.getCellComponents()) {
+                    comp.setHovered(false);
+                }
+                this.mainMenu.getCellComponents().get(this.mainMenu.getCurrentSelection()).setHovered(true);
+                // Game.audio().playSound("select.wav");
+            }
+
+            if (event.getKeyCode() == KeyEvent.VK_DOWN || event.getKeyCode() == KeyEvent.VK_S) {
+                this.mainMenu
+                        .setCurrentSelection(Math.min(buttons.length - 1, this.mainMenu.getCurrentSelection() + 1));
+                for (ImageComponent comp : this.mainMenu.getCellComponents()) {
+                    comp.setHovered(false);
+                }
+                this.mainMenu.getCellComponents().get(this.mainMenu.getCurrentSelection()).setHovered(true);
+                // Game.audio().playSound("select.wav");
+            }
+
+            if (event.getKeyCode() == KeyEvent.VK_ENTER || event.getKeyCode() == KeyEvent.VK_SPACE) {
+                // Game.audio().playSound("confirm.wav");
+                switch (this.mainMenu.getCurrentSelection()) {
+                    case 0:
+                        this.startGame();
+                        break;
+                    case 1:
+                        System.exit(0);
+                        break;
+                }
+
+            }
         });
 
         this.getComponents().add(this.mainMenu);
@@ -56,7 +100,20 @@ public class MenuScreen extends Screen implements IUpdateable {
     public void prepare() {
         super.prepare();
         Game.loop().attach(this);
-        Game.window().getRenderComponent().setBackground(Color.BLUE);
+        Game.window().getRenderComponent().setBackground(Color.black);
+
+        this.mainMenu.setForwardMouseEvents(false);
+
+        this.mainMenu.getCellComponents().forEach(comp -> {
+            comp.setFont(Fonts.MENU);
+            // comp.setSpriteSheet(Resources.spritesheets().get("button-background"));
+            comp.getAppearance().setForeColor(Color.green);
+            comp.getAppearanceHovered().setForeColor(Color.red);
+            comp.setForwardMouseEvents(false);
+        });
+
+        this.mainMenu.setEnabled(true);
+        this.mainMenu.getCellComponents().get(0).setHovered(true);
     }
 
     private void startGame() {
