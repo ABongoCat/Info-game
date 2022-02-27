@@ -83,22 +83,18 @@ public class MenuScreen extends Screen implements IUpdateable {
             if (event.getKeyCode() == KeyEvent.VK_ENTER || event.getKeyCode() == KeyEvent.VK_SPACE) {
 
                 switch (this.mainMenu.getCurrentSelection()) {
-                    // play
                     case 0:
                         this.changeScreen("GAME");
                         break;
 
-                    // options
                     case 1:
                         this.changeScreen("OPTIONS");
                         break;
 
-                    // about
                     case 2:
                         this.changeScreen("ABOUT");
                         break;
 
-                    // exit
                     case 3:
                         System.exit(0);
                         break;
