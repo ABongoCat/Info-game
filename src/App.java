@@ -5,6 +5,9 @@ import GUI.OptionScreen;
 import de.gurkenlabs.litiengine.Game;
 import de.gurkenlabs.litiengine.resources.Resources;
 
+/**
+ * @author Mihai & Jonathan
+ */
 public class App {
     public static void main(String[] args) throws Exception {
 
@@ -25,5 +28,6 @@ public class App {
         Game.screens().add(new InGameScreen());
 
         Game.start();
+
     }
 }

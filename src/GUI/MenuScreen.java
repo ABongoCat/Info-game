@@ -18,6 +18,9 @@ import de.gurkenlabs.litiengine.input.Input;
 import de.gurkenlabs.litiengine.resources.Resources;
 import de.gurkenlabs.litiengine.util.Imaging;
 
+/**
+ * @author Mihai & Jonathan
+ */
 public class MenuScreen extends Screen implements IUpdateable {
 
     private static final BufferedImage background = Imaging.scale(Resources.images().get("res/background.png"),

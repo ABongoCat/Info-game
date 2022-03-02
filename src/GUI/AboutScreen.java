@@ -3,6 +3,9 @@ package GUI;
 import de.gurkenlabs.litiengine.IUpdateable;
 import de.gurkenlabs.litiengine.gui.screens.Screen;
 
+/**
+ * @author Mihai & Jonathan
+ */
 public class AboutScreen extends Screen implements IUpdateable {
 
     public AboutScreen() {
